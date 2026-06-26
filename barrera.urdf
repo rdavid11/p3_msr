@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot name="barrier">
+
+  <material name="red">
+        <color rgba="0.8 0 0 1"/>
+  </material>
+
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="0 0 0.5"/>
+      <geometry>
+        <box size="0.15 0.15 1"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.5"/>
+      <geometry>
+        <box size="0.15 0.15 1"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <mass value="1000"/>
+      <inertia ixx="0"  ixy="0" ixz="0"
+                        iyy="0" iyz="0"
+                                izz="0"/>
+    </inertial>
+
+  </link> 
+
+  <link name="barrier_link">
+
+    <visual>
+      <origin xyz="-0.5 0 0.1523"/>
+      <geometry>
+        <box size="3 1 0.1"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin xyz="-0.5 0 0.1523"/>
+      <geometry>
+        <box size="3 1 0.1"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <mass value="15"/>
+      <inertia ixx="6.666"  ixy="0" ixz="0"
+                            iyy="0" iyz="0"
+                                    izz="6.666"/>
+    </inertial>
+
+  </link>
+
+
+  <joint name="base_barrier" type="prismatic">
+
+    <parent link="base_link"/>
+    <child link="barrier_link"/>
+
+    <origin xyz="0 0 0.25"/>
+    <axis xyz="1 0 0"/>
+
+    <limit lower="-1.0" upper="1.5" effort="100.0" velocity="10.0"/>
+
+  </joint>
+
+
+</robot>

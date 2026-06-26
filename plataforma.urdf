@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot name="goal">
+  <material name="green">
+        <color rgba="0 0.8 0 1"/>
+  </material>
+
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="0 0 0.005"/>
+      <geometry>
+        <box size="1 3 0.01"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.005"/>
+      <geometry>
+        <box size="1 3 0.01"/>
+      </geometry>
+    </collision>
+
+  </link> 
+    
+</robot>

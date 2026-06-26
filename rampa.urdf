@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<robot name="rampa">
+  <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="0 0 0.375"/>
+      <geometry>
+        <box size="4 2 0.75"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.375"/>
+      <geometry>
+        <box size="4 2 0.75"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <mass value="1000"/>
+      <inertia ixx="0"  ixy="0" ixz="0"
+                        iyy="0" iyz="0"
+                                izz="0"/>
+    </inertial>
+
+  </link> 
+
+  <link name="left_ramp">
+
+    <visual>
+      <origin rpy="0 -0.245 0" xyz="-3 0 0.375"/>
+      <geometry>
+        <box size="3.09 2 0.001"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 -0.245 0" xyz="-3 0 0.375"/>
+      <geometry>
+        <box size="3.09 2 0.001"/>
+      </geometry>
+    </collision>
+
+  </link>  
+
+  <joint name="base_left" type="fixed">
+
+    <parent link="base_link"/>
+    <child link="left_ramp"/>
+
+    <origin xyz="-0.5 0 0"/>
+
+  </joint>
+
+  <link name="right_ramp">
+
+    <visual>
+      <origin rpy="0 -0.245 0" xyz="3 0 0.75"/>
+      <geometry>
+        <box size="3.09 2 0.001"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 -0.245 0" xyz="3 0 0.75"/>
+      <geometry>
+        <box size="3.09 2 0.001"/>
+      </geometry>
+    </collision>
+
+  </link> 
+
+  <joint name="base_right" type="fixed">
+
+    <parent link="base_link"/>
+    <child link="right_ramp"/>
+
+    <origin xyz="0.5 0 0.375"/>
+
+  </joint>
+
+  <link name="platform">
+
+    <visual>
+      <origin rpy="0 0 0" xyz="7 0 0"/>
+      <geometry>
+        <box size="4 2 1.5"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="7 0 0"/>
+      <geometry>
+        <box size="4 2 1.5"/>
+      </geometry>
+    </collision>
+
+  </link> 
+
+  <joint name="right_platform" type="fixed">
+
+    <parent link="right_ramp"/>
+    <child link="platform"/>
+
+    <origin xyz="-0.5 0 0.375"/>
+
+  </joint>
+
+  <link name="final_ramp">
+
+    <visual>
+      <origin rpy="0 0.437 0" xyz="11 0.75"/>
+      <geometry>
+        <box size="3.35 2 0.001"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0.437 0" xyz="11 0.75"/>
+      <geometry>
+        <box size="3.35 2 0.001"/>
+      </geometry>
+    </collision>
+
+  </link> 
+
+  <joint name="ramp" type="fixed">
+
+    <parent link="platform"/>
+    <child link="final_ramp"/>
+
+    <origin xyz="10.5 0 0"/>
+
+  </joint>
+    
+
+</robot>
